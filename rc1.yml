@@ -11,4 +11,10 @@ spec:
               name: "pod1"
               labels:
                    app: rc
+          spec:
+                   containers:
+                   -    name: "con1"
+                        image: "centos:7"
+                        stdin: True
+                        tty: True
         
