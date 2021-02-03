@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+     name: new-depol
+spec: 
+     replicas: 1
+     selector:
+          matchLabels:
+                env: prod
+     template:
+            metadata:
+                  name: pvd-temp
+                  labels:
+                        env: prod
+            spec:
+                  volumes: 
+                  - name: mpvcd
+                    persistentVolumeClaim:
+                             claimName: mpc             
+                  containers: 
+                  -  name: "newc"
+                     image: "centos:latest"
+                     stdin: True
+                     tty: True
+                     volumeMounts:
+                     -   mountPath: /root
+                         name: mpvcd
