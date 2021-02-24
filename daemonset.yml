@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    app: newp
+  name: newp
+spec:
+  selector:
+    matchLabels:
+      app: newp
+  template:
+    metadata:
+      labels:
+        app: newp
+    spec:
+      containers:
+      - image: centos:latest
+        name: myimage
+        tty: True
+        stdin: True
