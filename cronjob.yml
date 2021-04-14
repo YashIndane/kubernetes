@@ -1,0 +1,20 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: myd
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+  spec:
+    completions: 6
+    parrallelism: 2
+    template:
+      metadata:
+        labels:
+          app: myd
+      spec:
+        containers:
+        - image: centos:7
+          name: centos
+          command: [ "expr" , "2" , "+" , "4" ]
+        restartPolicy: Never       
